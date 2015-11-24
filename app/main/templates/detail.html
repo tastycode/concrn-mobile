@@ -1,0 +1,29 @@
+<ion-view view-title="concrn">
+  <!-- do you want padding? -->
+  <ion-content>
+    <div class="detail padding">
+      <div class="detailPhoto">
+        <i class="icon ion-camera"></i>
+        <span class="detailPhoto-copy">Take Photo</span>
+        <input class="detailPhoto-input" name="photo" id="photoButton" type="file" capture="camera" accept="images/*">
+      </div>
+      <div class="list">
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Urgency
+          </div>
+          <select>
+            <option selected>Not Urgent</option>
+            <option>Really Urgent</option>
+          </select>
+        </label>
+        <label class="item item-input">
+          <textarea placeholder="Comments"></textarea>
+        </label>
+      </div>
+    </div>
+  </ion-content>
+    <div class="bar bar-footer bar-positive" ng-click="finishReport()">
+      <div class="title">Finish</div>
+    </div>
+</ion-view>

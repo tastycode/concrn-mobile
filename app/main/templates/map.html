@@ -1,0 +1,17 @@
+<ion-view view-title="concrn">
+  <!-- do you want padding? -->
+  <ion-content>
+    <div class="mapScreen">
+      <leaflet lf-center="center" markers="markers" height="90vh" width="100%"></leaflet>
+      <div class="mapSubmitSection">
+        <div class="mapAddress">{{addressLabel}}</div>
+        <!--<div class="mapSubmit" ng-click="submitReport()">-->
+          <!--<div class="title">Footer</div>-->
+        <!--</div>-->
+      </div>
+    </div>
+  </ion-content>
+  <div class="bar bar-footer bar-positive" ng-click="submitReport()">
+    <div class="title">Submit Report</div>
+  </div>
+</ion-view>

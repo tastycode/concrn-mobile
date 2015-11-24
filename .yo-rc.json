@@ -1,0 +1,22 @@
+{
+  "generator-m-ionic": {
+    "answers": {
+      "appName": "concrn",
+      "appId": "com.savagelabs.concrn",
+      "ionicCss": false,
+      "bowerPackages": [
+        "angular-localForage#~1.2.3"
+      ],
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "plugins": [
+        "cordova-plugin-device",
+        "cordova-plugin-dialogs",
+        "cordova-plugin-splashscreen"
+      ],
+      "appModule": "concrn"
+    }
+  }
+}
