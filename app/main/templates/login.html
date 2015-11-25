@@ -2,16 +2,17 @@
   <!-- do you want padding? -->
   <ion-content>
     <div class="loginScreen">
+      <pre>{{name | json}}</pre>
       <div class="list">
         <label class="item item-input">
-          <input type="text" placeholder="Name">
+          <input type="text" placeholder="Name" ng-model="responder.name">
         </label>
         <label class="item item-input">
-          <input type="text" placeholder="Phone">
+          <input type="text" placeholder="Phone" ng-model="responder.phone">
         </label>
       </div>
       <div class="padding">
-        <button class="button button-block button-positive activated">Submit</button>
+        <button class="button button-block button-positive activated" ng-click="updateReporter()">Submit</button>
       </div>
     </div>
   </ion-content>

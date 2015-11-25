@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk) {
+.controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk, ConcrnClient, ReverseGeocoder) {
   ionicMaterialInk.displayEffect();
   $scope.center = {
     autoDiscover: true
@@ -16,6 +16,7 @@ angular.module('main')
         iconUrl: '/images/pin.png', iconSize: [32, 50], iconAnchor: [15, 45]
       }
     };
+    _.debounce(updateAddressFromCenter, 1000)();
   }
 
   leafletData.getMap().then(function (map) {
@@ -28,12 +29,28 @@ angular.module('main')
     $scope.map && setCenterMarker();
   });
 
+  $scope.$on('leafletDirectiveMap.dragend', function () {
+    $scope.map && setCenterMarker();
+  });
+
   angular.extend($scope, {
     markers: {}
   });
 
+  function updateAddressFromCenter() {
+    return  ReverseGeocoder($scope.center.lat, $scope.center.lng).then(function(address) {
+      $scope.address = address;
+    });
+  }
+
   $scope.submitReport = function () {
-    $state.go('main.detail');
+    ConcrnClient.reportCrisis({
+      lat: $scope.center.lat,
+      lng: $scope.center.lng,
+      address: $scope.address
+    }).then(function(report) {
+      $state.go('main.detail', {id: report.id});
+    });
   };
 
 });

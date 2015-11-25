@@ -69,6 +69,13 @@ $RobotoDraftFontVersion: "1.0.0";
   flex-direction: column;
   justify-content: center;
   height: 8em;
+  &-preview {
+    width: 8em;
+    height: 7em;
+    background-size: cover;
+    background-position: center;
+  }
+
   .icon {
     font-size: 4em;
   }

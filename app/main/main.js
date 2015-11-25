@@ -28,7 +28,7 @@ angular.module('main', [
         }
       })
       .state('main.detail', {
-        url: '/detail',
+        url: '/detail?id',
         views: {
           pageContent: {
             templateUrl: 'main/templates/detail.html',
@@ -42,6 +42,7 @@ angular.module('main', [
         views: {
           pageContent: {
             templateUrl: 'main/templates/login.html',
+            controller: 'LoginCtrl as long'
           }
         }
       })

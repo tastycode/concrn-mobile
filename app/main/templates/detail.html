@@ -3,9 +3,10 @@
   <ion-content>
     <div class="detail padding">
       <div class="detailPhoto">
-        <i class="icon ion-camera"></i>
+        <i class="icon ion-camera" ng-if="!photo"></i>
+        <img class="detailPhoto-preview" ng-style="{'background-image': 'url(' + report.photo + ')'}" ng-if="photo"></img>
         <span class="detailPhoto-copy">Take Photo</span>
-        <input class="detailPhoto-input" name="photo" id="photoButton" type="file" capture="camera" accept="images/*">
+        <input class="detailPhoto-input" fileread="report.photo" name="photo" id="photoButton" type="file" capture="camera" accept="images/*">
       </div>
       <div class="list">
         <label class="item item-input item-select">
