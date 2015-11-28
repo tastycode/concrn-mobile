@@ -1,8 +1,11 @@
-<ion-view view-title="concrn">
+<ion-view view-title="Concrn">
   <!-- do you want padding? -->
   <ion-content>
     <div class="loginScreen">
-      <pre>{{name | json}}</pre>
+      <div class="loginScreen-photoContainer">
+        <img class="loginScreen-photo" src="/images/concrn-38.png">
+        </img>
+      </div>
       <div class="list">
         <label class="item item-input">
           <input type="text" placeholder="Name" ng-model="responder.name">
@@ -11,9 +14,9 @@
           <input type="text" placeholder="Phone" ng-model="responder.phone">
         </label>
       </div>
-      <div class="padding">
-        <button class="button button-block button-positive activated" ng-click="updateReporter()">Submit</button>
-      </div>
     </div>
   </ion-content>
+  <div class="bar bar-footer bar-balanced" ng-click="updateReporter()">
+    <div class="title">Done</div>
+  </div>
 </ion-view>

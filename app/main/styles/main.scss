@@ -5,13 +5,16 @@ in ionic's _variables.scss file.
 For example, you might change some of the default colors:
 */
 
+$balanced:                        #682869 !default;
+$assertive:                       #E91E63 !default;
+$calm:                            #698EED !default;
+
+
 $light:                           #fff !default;
 $stable:                          #f8f8f8 !default;
 $positive:                        #536DFE !default;
 $calm:                            #43cee6 !default;
-$balanced:                        #9C27B0 !default;
 $energized:                       #f0b840 !default;
-$assertive:                       #ef4e3a !default;
 $royal:                           #8a6de9 !default;
 $dark:                            #444 !default;
 $gapSmall: 1em;
@@ -29,6 +32,10 @@ $RobotoDraftFontVersion: "1.0.0";
 
 // Include all of Ionic
 @import "../../bower_components/ionic/scss/ionic";
+
+.background-balanced {
+  background-color: $balanced;
+}
 
 .mapScreen {
   .leaflet-control-attribution {
@@ -87,6 +94,18 @@ $RobotoDraftFontVersion: "1.0.0";
     opacity: 0;
     position: absolute;
     top: 0; left: 0; right: 0; bottom: 0;
+  }
+}
+
+.loginScreen {
+  &-photoContainer {
+    margin: 2em;
+    text-align: center;
+  }
+  &-photo {
+    width: 10em;
+    height: 10em;
+
   }
 }
 

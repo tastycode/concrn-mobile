@@ -13,7 +13,7 @@ angular.module('main')
       lng: center.lng,
       draggable: false,
       icon: {
-        iconUrl: '/images/pin.png', iconSize: [32, 50], iconAnchor: [15, 45]
+        iconUrl: '/images/pin.png', iconSize: [32, 56], iconAnchor: [15, 50]
       }
     };
     _.debounce(updateAddressFromCenter, 1000)();
