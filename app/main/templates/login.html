@@ -1,5 +1,4 @@
-<ion-view view-title="Concrn">
-  <!-- do you want padding? -->
+<div class="modal" ng-controller="LoginCtrl">
   <ion-content>
     <div class="loginScreen">
       <div class="loginScreen-photoContainer">
@@ -13,10 +12,10 @@
         <label class="item item-input">
           <input type="text" placeholder="Phone" ng-model="responder.phone">
         </label>
+        <div class="padding">
+          <button class="button button-block button-positive" ng-click="updateReporter()">Continue</button>
+        </div>
       </div>
     </div>
   </ion-content>
-  <div class="bar bar-footer bar-balanced" ng-click="updateReporter()">
-    <div class="title">Done</div>
-  </div>
-</ion-view>
+</div>

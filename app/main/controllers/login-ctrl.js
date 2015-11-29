@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('LoginCtrl', function ($scope, $state, localStorage) {
+.controller('LoginCtrl', function ($scope, $state, localStorage, $ionicModal) {
   $scope.responder = {
     name: localStorage.get('name', ''),
     phone: localStorage.get('phone', '')
@@ -8,6 +8,6 @@ angular.module('main')
   $scope.updateReporter = function() {
     localStorage.set('name', $scope.responder.name);
     localStorage.set('phone', $scope.responder.phone);
-    $state.go('main.map');
+    $scope.$emit('closeLogin');
   };
 });
