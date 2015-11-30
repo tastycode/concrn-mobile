@@ -1,4 +1,3 @@
-'use strict';
 angular.module('main', [
   'ionic',
   'ngCordova',
@@ -8,7 +7,6 @@ angular.module('main', [
   // TODO: load other modules selected during generation
 ])
 .config(function ($stateProvider, $urlRouterProvider) {
-
   // ROUTING with ui.router
   $urlRouterProvider.otherwise('/main/map');
   $stateProvider
@@ -73,4 +71,19 @@ angular.module('main', [
           }
         }
       });
+}).run(function($rootScope, responderState, $window) {
+  $rootScope.updatingLocation = false;
+  $rootScope.$watch(function() {
+    return responderState.getIsResponder();
+  }, function(isResponder) {
+    if (!isResponder || $rootScope.updatingLocation) {
+      return;
+    }
+
+    $rootScope.updatingLocation = true;
+    $window.navigator.geolocation.watchPosition(function(position) {
+      //send update to server
+    });
+  });
+
 });

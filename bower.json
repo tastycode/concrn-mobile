@@ -5,7 +5,7 @@
     "angular-animate": "~1.4.5",
     "angular-sanitize": "~1.4.5",
     "angular-ui-router": "~0.2.15",
-    "ngCordova": "~0.1.17-alpha",
+    "ngCordova": "~0.1.23-alpha",
     "angular-localForage": "~1.2.3",
     "angular-leaflet-directive": "~0.10.0",
     "robotodraft": "~1.1.0",

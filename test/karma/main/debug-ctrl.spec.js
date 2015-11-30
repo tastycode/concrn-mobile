@@ -1,5 +1,3 @@
-'use strict';
-
 describe('module: main, controller: DebugCtrl', function () {
 
   // load the controller's module

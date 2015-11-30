@@ -5,6 +5,7 @@
     <meta name="description" content="">
     <!-- ionic meta tags -->
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
+    <meta http-equiv="Content-Security-Policy" content="default-src *; style-src 'self' 'unsafe-inline'; script-src 'self' 'unsafe-inline' 'unsafe-eval'">
     <!-- custom meta tags -->
     <meta name="format-detection" content="telephone=no">
     <meta name="apple-mobile-web-app-capable" content="yes">
@@ -63,10 +64,12 @@
     <!-- inject:js -->
     <script src="main/main.js"></script>
     <script src="main/services/reverse-geocoder.js"></script>
+    <script src="main/services/responder-state.js"></script>
     <script src="main/services/main-serv.js"></script>
     <script src="main/services/localstorage.js"></script>
     <script src="main/services/concrn-client.js"></script>
     <script src="main/directives/filereader.js"></script>
+    <script src="main/controllers/responder-ctrl.js"></script>
     <script src="main/controllers/menu-ctrl.js"></script>
     <script src="main/controllers/map-ctrl.js"></script>
     <script src="main/controllers/login-ctrl.js"></script>

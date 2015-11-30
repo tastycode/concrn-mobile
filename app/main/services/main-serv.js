@@ -1,4 +1,3 @@
-'use strict';
 angular.module('main')
 .service('Main', function ($log, $timeout) {
 

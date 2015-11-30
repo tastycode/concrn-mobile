@@ -1,6 +1,5 @@
-'use strict';
 angular.module('main')
-.controller('LoginCtrl', function ($scope, $state, localStorage, $ionicModal) {
+.controller('LoginCtrl', function ($scope, $state, localStorage) {
   $scope.responder = {
     name: localStorage.get('name', ''),
     phone: localStorage.get('phone', '')

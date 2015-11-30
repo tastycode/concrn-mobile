@@ -1,19 +1,24 @@
-'use strict';
 angular.module('main')
 .controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk, ConcrnClient, ReverseGeocoder) {
   ionicMaterialInk.displayEffect();
   $scope.center = {
     autoDiscover: true
   };
+  $scope.tiles = {
+    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+  };
   //get center
   function setCenterMarker () {
+    if (!$scope.map.getCenter) {
+      return;
+    }
     var center = $scope.map.getCenter();
     $scope.markers.mainMarker = {
       lat: center.lat,
       lng: center.lng,
       draggable: false,
       icon: {
-        iconUrl: '/images/pin.png', iconSize: [32, 56], iconAnchor: [15, 50]
+        iconUrl: 'main/assets/images/pin.png', iconSize: [32, 56], iconAnchor: [15, 50]
       }
     };
     _.debounce(updateAddressFromCenter, 1000)();

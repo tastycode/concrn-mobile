@@ -1,4 +1,3 @@
-'use strict';
 angular.module('main')
 .controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient) {
   $scope.report = {

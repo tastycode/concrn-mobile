@@ -1,5 +1,3 @@
-'use strict';
-
 describe('module: main, controller: MenuCtrl', function () {
 
   // load the controller's module

@@ -1,4 +1,3 @@
-'use strict';
 angular.module('main')
 .factory('ConcrnClient', function($http, localStorage) {
   var service = {};

@@ -1,4 +1,3 @@
-'use strict';
 angular.module('main')
 .controller('DebugCtrl', function ($log, Main, Config) {
 
