@@ -13,8 +13,6 @@ angular.module('main')
   // https://github.com/mwaylabs/generator-m-ionic#gulp-build-vars
   BUILD: {
     /*inject-build*/
-    'key': 'value',
-    'keys2': 'value2'
     /*endinject*/
   }
 
