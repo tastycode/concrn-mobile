@@ -1,6 +1,7 @@
 angular.module('main')
-.factory('ConcrnClient', function($http, localStorage) {
+.factory('ConcrnClient', function($http, localStorage, Config) {
   var service = {};
+  var apiHost = Config.ENV.SERVER_URL;
   service.reportCrisis = function(options) {
     var params = {
       report: {
@@ -11,12 +12,12 @@ angular.module('main')
         long: options.lng
       }
     };
-    return $http.post('http://localhost:3555/reports.js', params).then(function(response) {
+    return $http.post(apiHost + '/reports.js', params).then(function(response) {
       return response.data;
     });
   };
   service.updateReport = function(id, options) {
-    return $http.post('http://localhost:3555/reports/ ' + id + '/upload.js', options).then(function(response) {
+    return $http.post(apiHost + '/reports/ ' + id + '/upload.js', options).then(function(response) {
       return response.data;
     });
   };
