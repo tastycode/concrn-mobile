@@ -1,10 +1,10 @@
-<ion-view view-title="concrn">
+<ion-view view-title="Concrn">
   <!-- do you want padding? -->
   <ion-content>
     <div class="detail padding">
       <div class="detailPhoto">
-        <i class="icon ion-camera" ng-if="!photo"></i>
-        <img class="detailPhoto-preview" ng-style="{'background-image': 'url(' + report.photo + ')'}" ng-if="photo"></img>
+        <i class="icon ion-camera" ng-if="!report.photo"></i>
+        <img class="detailPhoto-preview" ng-style="{'background-image': 'url(' + report.photo + ')'}" ng-if="report.photo"></img>
         <span class="detailPhoto-copy">Take Photo</span>
         <input class="detailPhoto-input" fileread="report.photo" name="photo" id="photoButton" type="file" accept="image/*" capture="camera">
       </div>
@@ -13,13 +13,46 @@
           <div class="input-label">
             Urgency
           </div>
-          <select>
-            <option selected>Not Urgent</option>
-            <option>Really Urgent</option>
+          <select ng-model="report.urgency" ng-options="o.id as o.label for o in urgencyValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Observation
+          </div>
+          <select ng-model="report.observations" multiple ng-options="o as o for o in observationValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Gender
+          </div>
+          <select ng-model="report.gender" ng-options="o for o in genderValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Age
+          </div>
+          <select ng-model="report.age" ng-options="o for o in ageValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Race
+          </div>
+          <select ng-model="report.race" ng-options="o for o in raceValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Setting
+          </div>
+          <select ng-model="report.setting" ng-options="o as o for o in settingValues">
           </select>
         </label>
         <label class="item item-input">
-          <textarea placeholder="Comments"></textarea>
+          <textarea ng-model="report.nature" placeholder="Add additional important information here"></textarea>
         </label>
       </div>
     </div>
