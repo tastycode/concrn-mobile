@@ -5,7 +5,10 @@ angular.module('main')
     autoDiscover: true
   };
   $scope.tiles = {
-    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
+    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
+    options: {
+      subdomains: '1234'
+    }
   };
   //get center
   function setCenterMarker () {
