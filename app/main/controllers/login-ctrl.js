@@ -1,5 +1,6 @@
 angular.module('main')
-.controller('LoginCtrl', function ($scope, $state, localStorage) {
+.controller('LoginCtrl', function ($scope, $state, localStorage, ionicMaterialInk) {
+  ionicMaterialInk.displayEffect();
   $scope.responder = {
     name: localStorage.get('name', ''),
     phone: localStorage.get('phone', '')

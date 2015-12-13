@@ -1,5 +1,6 @@
 angular.module('main')
-.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient) {
+.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk) {
+  ionicMaterialInk.displayEffect();
   $scope.urgencyValues = [
     {id: 1, label: 'Not urgent'},
     {id: 2, label: 'This week'},
