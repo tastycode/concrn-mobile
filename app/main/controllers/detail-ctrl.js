@@ -27,10 +27,11 @@ angular.module('main')
   };
 
   $scope.finishReport = function () {
+    var observations = $scope.report.observations ? $scope.report.observations.join(',') : '';
     ConcrnClient.updateReport($scope.report.id, {
       report: {
         image: $scope.report.photo,
-        observations: $scope.report.observations.join(','),
+        observations: observations,
         urgency: $scope.report.urgency,
         age: $scope.report.age,
         gender: $scope.report.gender,
