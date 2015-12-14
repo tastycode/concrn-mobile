@@ -37,6 +37,18 @@ $RobotoDraftFontVersion: "1.0.0";
   background-color: $balanced;
 }
 
+ion-nav-bar {
+  md-progress-linear {
+    z-index: 1024;
+    position: absolute;
+    top: 43px;
+    .md-bar {
+      background-color: $balanced;
+      border-top: none;
+    }
+  }
+}
+
 .mapScreen {
   .leaflet-control-attribution {
     position: absolute;
