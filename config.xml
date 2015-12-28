@@ -18,10 +18,19 @@
     <allow-intent href="geo:*" />
     <platform name="android">
         <allow-intent href="market:*" />
+        <splash src="res/android/default/splash-port-hdpi.png" density="port-hdpi"/>
+        <splash src="res/android/default/splash-port-ldpi.png" density="port-ldpi"/>
+        <splash src="res/android/default/splash-port-mdpi.png" density="port-mdpi"/>
+        <splash src="res/android/default/splash-port-xhdpi.png" density="port-xhdpi"/>
     </platform>
     <platform name="ios">
-        <allow-intent href="itms:*" />
-        <allow-intent href="itms-apps:*" />
+      <allow-intent href="itms:*" />
+      <allow-intent href="itms-apps:*" />
+      <splash src="res/ios/default/Default-568h@2x~iphone-568h@2x~iphone.png" width="320" height="480"/>
+      <splash src="res/ios/default/Default-667h.png" width="750" height="1334"/>
+      <splash src="res/ios/default/Default-736h.png" width="1242" height="2208"/>
+      <splash src="res/ios/default/Default-iphone.png" width="320" height="480"/>
+      <splash src="res/ios/default/Default@2x-iphone.png"  width="640" height="960"/>
     </platform>
     <engine name="ios" spec="~3.9.2" />
     <engine name="android" spec="~4.1.1" />
