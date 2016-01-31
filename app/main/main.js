@@ -24,12 +24,6 @@ angular.module('main', [
             templateUrl: 'main/templates/map.html',
             controller: 'MapCtrl as map'
           }
-        },
-        onEnter: function(localStorage, $state) {
-          var responderName = localStorage.get('name', null);
-          if (!responderName) {
-            $state.go('main.login');
-          }
         }
       })
       .state('main.detail', {

@@ -1,5 +1,23 @@
 angular.module('main')
-.controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk, ConcrnClient, ReverseGeocoder) {
+.controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk, ConcrnClient, ReverseGeocoder, localStorage, $ionicModal) {
+  function verifyLogin() {
+    var responderName = localStorage.get('name', null);
+    if (!responderName) {
+      $ionicModal.fromTemplateUrl('main/templates/login.html', {
+        scope: $scope,
+        animation: 'slide-in-up',
+        hardwareBackButtonClose: false,
+        backdropClickToClose: false
+      }).then(function(modal) {
+        $scope.modal = modal;
+        $scope.modal.show();
+      });
+      $scope.$on('closeLogin', function() {
+        $scope.modal.hide();
+      });
+    }
+  }
+  verifyLogin();
   ionicMaterialInk.displayEffect();
   $scope.center = {
     autoDiscover: true
