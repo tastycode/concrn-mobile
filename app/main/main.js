@@ -210,4 +210,9 @@ angular.module('main', [
 
   $httpProvider.interceptors.push(interceptor);
 
+})
+.run(function($cordovaStatusbar, $ionicPlatform) {
+  $ionicPlatform.ready(function() {
+    $cordovaStatusbar.style(2);  //black translucent http://ngcordova.com/docs/plugins/statusbar/
+  });
 });

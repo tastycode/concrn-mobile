@@ -28,7 +28,7 @@ $RobotoDraftFontPath: "/bower_components/robotodraft/fonts"; // REMINDER: edit a
 $RobotoDraftFontName: "RobotoDraft";
 $RobotoDraftFontVersion: "1.0.0";
 
-@import "app/bower_components/robotodraft/sass/robotodraft.scss";  
+@import "app/bower_components/robotodraft/sass/robotodraft.scss";
 
 // Include all of Ionic
 @import "../../bower_components/ionic/scss/ionic";
@@ -37,14 +37,13 @@ $RobotoDraftFontVersion: "1.0.0";
   background-color: $balanced;
 }
 
-ion-nav-bar {
+.bar-footer {
   md-progress-linear {
     z-index: 1024;
-    position: absolute;
-    top: 43px;
+    top: -10px;
     .md-bar {
-      background-color: $balanced;
-      border-top: none;
+      background-color: $calm;
+      border-bottom: none;
     }
   }
 }
@@ -120,4 +119,3 @@ ion-nav-bar {
 
   }
 }
-
