@@ -77,7 +77,7 @@ the following **technology stack**:
 - **sass** for styling - http://sass-lang.com/
 
 
-an integrated **testing workflow** with:
+
 
 - **karma** to run your unit tests - http://karma-runner.github.io/
 - **jasmine** for writing unit & integration tests - http://jasmine.github.io/
