@@ -1,15 +1,10 @@
 angular.module('main')
 .controller('LoginCtrl', function ($scope, $state, localStorage, ionicMaterialInk, $ionicHistory, ConcrnClient) {
   ionicMaterialInk.displayEffect();
-  $scope.responder = {
-    name: localStorage.get('name', ''),
-    phone: localStorage.get('phone', ''),
-    isResponder: localStorage.get('isResponder', false)
-  };
+  $scope.user = ConcrnClient.getUser();
   $scope.updateReporter = function() {
-    localStorage.set('name', $scope.responder.name);
-    localStorage.set('phone', $scope.responder.phone);
-    localStorage.set('isResponder', ConcrnClient.isUserResponder($scope.responder.phone));
+    localStorage.set('name', $scope.user.name);
+    localStorage.set('phone', $scope.user.phone);
     if ($state.current.name === 'main.login') {
       $ionicHistory.nextViewOptions({
         disableBack: true

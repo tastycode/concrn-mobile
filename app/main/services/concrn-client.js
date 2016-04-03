@@ -2,6 +2,7 @@ angular.module('main')
 .factory('ConcrnClient', function($http, localStorage, Config) {
   var service = {};
   var apiHost = Config.ENV.SERVER_URL;
+  
   service.reportCrisis = function(options) {
     var params = {
       report: {
@@ -28,18 +29,38 @@ angular.module('main')
       return response.data.result_value;
     });
   }
+  
+  service.isUserOnDuty = function(phone) {
+    return $http.get(apiHost + '/api/users/is_responder_shift_started?phone=' + phone).then(function(response) {
+      return response.data.result_value;
+    });
+  }
 
-  service.startResponderShift(phone) {
+  service.startResponderShift = function(phone) {
     return $http.get(apiHost + '/api/users/start_responder_shift?phone=' + phone).then(function(response) {
       return response.data;
     }); 
   }
   
-  service.endResponderShift(phone) {
+  service.endResponderShift = function(phone) {
     return $http.get(apiHost + '/api/users/end_responder_shift?phone=' + phone).then(function(response) {
       return response.data;
     }); 
   }
-  
+
+  service.getUser = function() {
+    var user = {
+      name: localStorage.get('name', ''),
+      phone: localStorage.get('phone', ''),
+      isResponder: false,
+      isOnDuty: false
+    };
+    if(user.phone != '') {
+      user.isResponder = service.isUserResponder(user.phone);
+      user.isOnDuty = service.isUserOnDuty(user.phone);
+    }
+    return user;
+  }
+    
   return service;
 });

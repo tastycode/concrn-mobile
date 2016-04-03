@@ -1,8 +1,8 @@
 angular.module('main')
 .controller('MapCtrl', function ($scope, leafletData, $state, ionicMaterialInk, ConcrnClient, ReverseGeocoder, localStorage, $ionicModal) {
   function verifyLogin() {
-    var responderName = localStorage.get('name', null);
-    if (!responderName) {
+    var userName = localStorage.get('name', null);
+    if (!userName) {
       $ionicModal.fromTemplateUrl('main/templates/login.html', {
         scope: $scope,
         animation: 'slide-in-up',

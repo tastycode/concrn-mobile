@@ -40,8 +40,11 @@
           New Report
         </ion-item>
 	     <ion-item>
-	       <ion-toggle toggle-class="toggle-assertive" 
-	             ng-change="toggleResponderMode()" ng-model="responder.isResponder">
+	       <ion-toggle 
+	           toggle-class="toggle-calm" 
+	           ng-change="toggleResponderMode()" 
+	           ng-model="user.isOnDuty"
+	           ng-checked="user.isOnDuty">
             Responder Mode
           </ion-toggle>
         </ion-item>
