@@ -80,6 +80,12 @@ $RobotoDraftFontVersion: "1.0.0";
     font-size: 18px;
 }
 
+.detail {
+  .button-small {
+    margin-right: 10px;
+  }
+}
+
 .detailPhoto {
   position: relative;
   display: flex;

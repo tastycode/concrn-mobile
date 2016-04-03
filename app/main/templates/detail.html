@@ -1,28 +1,30 @@
 <ion-view view-title="Concrn">
   <!-- do you want padding? -->
   <ion-content>
-    <div class="detail padding">
-      <div class="detailPhoto">
+    <div class="detail">
+      <div class="detailPhoto" ng-click="takePhoto()">
         <i class="icon ion-camera" ng-if="!report.photo"></i>
         <img class="detailPhoto-preview" ng-style="{'background-image': 'url(' + report.photo + ')'}" ng-if="report.photo"></img>
         <span class="detailPhoto-copy">Take Photo</span>
-        <input class="detailPhoto-input" fileread="report.photo" name="photo" id="photoButton" type="file" accept="image/*" capture="camera">
       </div>
       <div class="list">
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Urgency
-          </div>
-          <select ng-model="report.urgency" ng-options="o.id as o.label for o in urgencyValues">
-          </select>
-        </label>
-        <label class="item item-input item-select">
-          <div class="input-label">
-            Gender
-          </div>
-          <select ng-model="report.gender" ng-options="o for o in genderValues">
-          </select>
-        </label>
+        <div class="item item-divider">
+          Urgency
+        </div>
+        <div class="item">
+          <button class="button button-small" ng-class="{'button-assertive': isUrgency(o)}"
+              ng-repeat="o in urgencyValues" ng-click="setUrgency(o)">
+              {{o.label}}</button>
+        </div>
+        <div class="item item-divider">
+          Gender
+        </div>
+        <div class="item">
+          <button class="button button-small" ng-class="{'button-positive': isGender(o)}"
+              ng-repeat="o in genderValues" ng-click="setGender(o)">
+              {{o}}</button>
+        </div>
+
         <label class="item item-input item-select">
           <div class="input-label">
             Age

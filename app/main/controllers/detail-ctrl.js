@@ -1,10 +1,8 @@
 angular.module('main')
-.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk) {
+.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk, $cordovaCamera) {
   ionicMaterialInk.displayEffect();
   $scope.urgencyValues = [
-    {id: 1, label: 'Not urgent'},
-    {id: 2, label: 'This week'},
-    {id: 3, label: 'Today'},
+    {id: 0, label: 'Not urgent'},
     {id: 4, label: 'Within an hour'},
     {id: 5, label: 'Need help now'}
   ];
@@ -17,14 +15,45 @@ angular.module('main')
                       'Native Hawaiian or Pacific Islander',
                       'White',
                       'Other/Unknown'];
-  $scope.settingValues = ['Public Space', 'Workplace', 'School', 'Home', 'Other'];
-  $scope.observationValues = ['At risk of harm', 'Under the influence', 'Anxious', 'Depressed', 'Aggravated', 'Threatening'];
-
   $scope.report = {
     id: $stateParams.id,
     photo: null,
-    urgency: 1,
+    urgency: 3,
   };
+
+  $scope.takePhoto = function() {
+    var options = {
+      quality: 90,
+      destinationType: Camera.DestinationType.DATA_URL,
+      sourceType: Camera.PictureSourceType.CAMERA,
+      allowEdit: true,
+      encodingType: Camera.EncodingType.JPEG,
+      popoverOptions: CameraPopoverOptions,
+      saveToPhotoAlbum: false,
+      correctOrientation:true
+    };
+    $cordovaCamera.getPicture(options).then(function(imageData) {
+      $scope.report.photo = "data:image/jpeg;base64," + imageData;
+    }, function(err) {
+      console.warn('Error in getPicture ', err);
+    });
+  };
+
+  $scope.isUrgency = function(urgencyObject) {
+    return $scope.report.urgency === urgencyObject.id;
+  }
+
+  $scope.setUrgency = function(urgencyObject) {
+    $scope.report.urgency = urgencyObject.id;
+  }
+
+  $scope.isGender = function(o) {
+    return $scope.report.gender === o;
+  }
+
+  $scope.setGender = function(o) {
+    $scope.report.gender = o;
+  }
 
   $scope.finishReport = function () {
     var observations = $scope.report.observations ? $scope.report.observations.join(',') : '';
