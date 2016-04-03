@@ -16,5 +16,8 @@ angular.module('main')
     $scope.modal.hide();
   });
 
+  $scope.onDuty = function() {
+    
+  };
 
 });

@@ -21,5 +21,8 @@ angular.module('main')
       return response.data;
     });
   };
+  service.updateStatus = function () {
+  	 
+  }
   return service;
 });
