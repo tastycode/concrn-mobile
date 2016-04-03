@@ -16,6 +16,27 @@
           <select ng-model="report.urgency" ng-options="o.id as o.label for o in urgencyValues">
           </select>
         </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Gender
+          </div>
+          <select ng-model="report.gender" ng-options="o for o in genderValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Age
+          </div>
+          <select ng-model="report.age" ng-options="o for o in ageValues">
+          </select>
+        </label>
+        <label class="item item-input item-select">
+          <div class="input-label">
+            Race
+          </div>
+          <select ng-model="report.race" ng-options="o for o in raceValues">
+          </select>
+        </label>
         <label class="item item-input">
           <textarea ng-model="report.nature" placeholder="Add additional important information here"></textarea>
         </label>
