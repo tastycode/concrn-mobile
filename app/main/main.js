@@ -27,7 +27,7 @@ angular.module('main', [
         }
       })
       .state('main.detail', {
-        url: '/detail?id',
+        url: '/detail?id&lat&lng&address',
         views: {
           pageContent: {
             templateUrl: 'main/templates/detail.html',

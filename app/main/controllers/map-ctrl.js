@@ -70,13 +70,7 @@ angular.module('main')
   }
 
   $scope.submitReport = function () {
-    ConcrnClient.reportCrisis({
-      lat: $scope.center.lat,
-      lng: $scope.center.lng,
-      address: $scope.address
-    }).then(function(report) {
-      $state.go('main.detail', {id: report.id});
-    });
+    $state.go('main.detail', {lat: $scope.center.lat, lng: $scope.center.lng, address: $scope.address});
   };
 
 });

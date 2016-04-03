@@ -16,7 +16,6 @@ angular.module('main')
                       'White',
                       'Other/Unknown'];
   $scope.report = {
-    id: $stateParams.id,
     photo: null,
     urgency: 3,
   };
@@ -35,7 +34,7 @@ angular.module('main')
       correctOrientation:true
     };
     $cordovaCamera.getPicture(options).then(function(imageData) {
-      $scope.report.photo = "data:image/jpeg;base64," + imageData;
+      $scope.report.photo = 'data:image/jpeg;base64,' + imageData;
     }, function(err) {
       console.warn('Error in getPicture ', err);
     });
@@ -59,18 +58,28 @@ angular.module('main')
 
   $scope.finishReport = function () {
     var observations = $scope.report.observations ? $scope.report.observations.join(',') : '';
-    ConcrnClient.updateReport($scope.report.id, {
-      report: {
-        image: $scope.report.photo,
-        observations: observations,
-        urgency: $scope.report.urgency,
-        age: $scope.report.age,
-        gender: $scope.report.gender,
-        setting: $scope.report.setting,
-        nature: $scope.report.nature
-      }
-    }).then(function() {
+
+    ConcrnClient.reportCrisis({
+      lat: $stateParams.lat,
+      lng: $stateParams.lng,
+      address: $stateParams.address
+    }).then(function(report) {
+      ConcrnClient.updateReport(report.id, {
+        report: {
+          image: $scope.report.photo,
+          observations: observations,
+          urgency: $scope.report.urgency,
+          age: $scope.report.age,
+          gender: $scope.report.gender,
+          setting: $scope.report.setting,
+          nature: $scope.report.nature
+        }
+      }).then(function() {
+        alert('Your report has been made. You will receive a text when a responder is on the way.')
+      });
       $state.go('main.map');
+    }, function() {
+        alert('Your report failed to send. Please contact support@concrn.com')
     });
   };
 });
