@@ -37,6 +37,10 @@ $RobotoDraftFontVersion: "1.0.0";
   background-color: $balanced;
 }
 
+.back-text {
+  display: none !important;
+}
+
 .bar-footer {
   md-progress-linear {
     z-index: 1024;
