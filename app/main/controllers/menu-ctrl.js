@@ -1,11 +1,10 @@
 angular.module('main')
-.controller('MenuCtrl', function ($ionicModal, $scope, ConcrnClient) {
-
-  var updateUser = function() {
-    $scope.user = ConcrnClient.getUser();
-  }
-  updateUser();
+.controller('MenuCtrl', function ($ionicModal, $scope, UserService) {
   
+  $scope.getToggleState = function() {
+    return UserService.getUser().isOnDuty;
+  }
+
   $ionicModal.fromTemplateUrl('main/templates/login.html', {
     scope: $scope,
     animation: 'slide-in-up'
@@ -19,18 +18,23 @@ angular.module('main')
 
   $scope.$on('closeLogin', function() {
     $scope.modal.hide();
-    updateUser();
   });
 
   $scope.toggleResponderMode = function() {
-     if($scope.user.isResponder) {
-     	 if($scope.user.isOnDuty) {
-     	   ConcrnClient.endResponderShift($scope.user.phone);
-     	   $scope.user.isOnDuty = false;
-     	 } else {
-     	   ConcrnClient.startResponderShift($scope.user.phone);
-     	   $scope.user.isOnDuty = true;
-     	 }
+  	  var user = UserService.getUser();
+     if(user.isResponder) {
+     	 if(user.isVerified) {
+     	   if(user.isOnDuty) {
+     	     UserService.endResponderShift(user);
+     	     user.isOnDuty = false;
+     	   } else {
+     	     UserService.startResponderShift(user);
+     	     user.isOnDuty = true;
+     	   }
+     	   UserService.updateUser(user);
+       } else {
+         //TODO 
+       }
      } else {
        //TODO display modal to open application form
        console.log("Not a respoder");

@@ -1,10 +1,9 @@
 angular.module('main')
-.controller('LoginCtrl', function ($scope, $state, localStorage, ionicMaterialInk, $ionicHistory, ConcrnClient) {
+.controller('LoginCtrl', function ($scope, $state, localStorage, ionicMaterialInk, $ionicHistory, UserService) {
   ionicMaterialInk.displayEffect();
-  $scope.user = ConcrnClient.getUser();
+  $scope.user = UserService.getUser();
   $scope.updateReporter = function() {
-    localStorage.set('name', $scope.user.name);
-    localStorage.set('phone', $scope.user.phone);
+    UserService.updateUser($scope.user);
     if ($state.current.name === 'main.login') {
       $ionicHistory.nextViewOptions({
         disableBack: true

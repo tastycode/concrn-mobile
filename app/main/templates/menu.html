@@ -40,13 +40,11 @@
           New Report
         </ion-item>
 	     <ion-item>
-	       <ion-toggle 
-	           toggle-class="toggle-calm" 
-	           ng-change="toggleResponderMode()" 
-	           ng-model="user.isOnDuty"
-	           ng-checked="user.isOnDuty">
-            Responder Mode
-          </ion-toggle>
+          Responder Mode
+          <button ng-click="toggleResponderMode()">
+            <span ng-if="getToggleState()">On</span>
+            <span ng-if="!getToggleState()">Off</span>
+          </button>
         </ion-item>
       </ion-list>
     </ion-content>
