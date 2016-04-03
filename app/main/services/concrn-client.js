@@ -16,13 +16,30 @@ angular.module('main')
       return response.data;
     });
   };
+  
   service.updateReport = function(id, options) {
     return $http.post(apiHost + '/reports/ ' + id + '/upload.js', options).then(function(response) {
       return response.data;
     });
   };
-  service.updateStatus = function () {
-  	 
+  
+  service.isUserResponder = function (phone) {
+  	 return $http.get(apiHost + '/api/users/is_user_responder?phone=' + phone).then(function(response) {
+      return response.data.result_value;
+    });
   }
+
+  service.startResponderShift(phone) {
+    return $http.get(apiHost + '/api/users/start_responder_shift?phone=' + phone).then(function(response) {
+      return response.data;
+    }); 
+  }
+  
+  service.endResponderShift(phone) {
+    return $http.get(apiHost + '/api/users/end_responder_shift?phone=' + phone).then(function(response) {
+      return response.data;
+    }); 
+  }
+  
   return service;
 });

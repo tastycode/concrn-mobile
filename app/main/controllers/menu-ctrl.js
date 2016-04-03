@@ -1,5 +1,5 @@
 angular.module('main')
-.controller('MenuCtrl', function ($ionicModal, $scope) {
+.controller('MenuCtrl', function ($ionicModal, $scope, ConcrnClient) {
 
   $ionicModal.fromTemplateUrl('main/templates/login.html', {
     scope: $scope,
@@ -16,8 +16,10 @@ angular.module('main')
     $scope.modal.hide();
   });
 
-  $scope.onDuty = function() {
-    
+  $scope.toggleResponderMode = function() {
+     if($scope.responder.isResponder) {
+             
+     }
   };
 
 });
