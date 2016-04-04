@@ -1,4 +1,4 @@
-<div class="modal" ng-controller="LoginCtrl">
+<div class="modal" ng-controller="SubmitCodeModalCtrl">
   <ion-content>
     <div class="loginScreen">
       <div class="loginScreen-photoContainer">
@@ -6,14 +6,14 @@
         </img>
       </div>
       <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="Name" ng-model="user.name">
+        <label class="item">
+          <span>Please enter the code texted to you</span>
         </label>
         <label class="item item-input">
-          <input type="tel" placeholder="Phone" ng-model="user.phone">
+          <input type="text" placeholder="Code" ng-model="code">
         </label>
         <div class="padding">
-          <button class="button button-block button-positive" ng-click="updateReporter()">Continue</button>
+          <button class="button button-block button-positive" ng-click="submitCode()">Verify</button>
         </div>
       </div>
     </div>

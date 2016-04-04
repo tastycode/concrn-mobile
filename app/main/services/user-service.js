@@ -5,7 +5,7 @@ angular.module('main')
   var inMemoryOnDuty = null, inMemoryIsResponder = null;
   
   service.isUserResponder = function (user) {
-  	 if(inMemoryIsResponder == null) {
+  	 if(inMemoryIsResponder === null) {
   	 	inMemoryIsResponder = false;
   	   $http.get(apiHost + '/api/users/is_user_responder?phone=' + user.phone)
   	     .then(function(response) {
@@ -13,29 +13,29 @@ angular.module('main')
         });
     }
     return inMemoryIsResponder;
-  }
+  };
   
   service.isUserOnDuty = function(user) {
-  	 if(inMemoryOnDuty == null) {
+  	 if(inMemoryOnDuty === null) {
   	 	inMemoryOnDuty = false;
   	   $http.get(apiHost + '/api/users/has_responder_shift_started?phone=' + user.phone).then(function(response) {
         inMemoryOnDuty = response.data.result_value;
       });
     }
     return inMemoryOnDuty; 
-  }
+  };
 
   service.startResponderShift = function(user) {
     return $http.get(apiHost + '/api/users/start_responder_shift?phone=' + user.phone).then(function(response) {
       return response.data;
     }); 
-  }
+  };
   
   service.endResponderShift = function(user) {
     return $http.get(apiHost + '/api/users/end_responder_shift?phone=' + user.phone).then(function(response) {
       return response.data;
     }); 
-  }
+  };
 
   service.getUser = function() {
     var user = {
@@ -52,7 +52,7 @@ angular.module('main')
       }
     }
     return user;
-  }
+  };
   
   service.updateUser = function(user) {
     localStorage.set('name', user.name);
@@ -60,7 +60,19 @@ angular.module('main')
     localStorage.set('locallyVerified', user.isVerified);
     inMemoryOnDuty = user.isOnDuty;
     inMemoryIsResponder = user.isResponder;
-  }
+  };
+  
+  service.textVerificationCode = function(user, callback) {
+    return $http.post(apiHost + '/api/phone_numbers.js?phone=' + user.phone).then(function(response) {
+      callback(response.data);
+    });
+  };
+  
+  service.submitVerificationCode = function(user, code, callback) {
+    return $http.post(apiHost + '/api/phone_numbers.js?phone=' + user.phone).then(function(response) {
+      callback(response.data);
+    });
+  };
 
   return service;
 });

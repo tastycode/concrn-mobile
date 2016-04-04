@@ -3,21 +3,32 @@ angular.module('main')
   
   $scope.getToggleState = function() {
     return UserService.getUser().isOnDuty;
-  }
+  };
 
   $ionicModal.fromTemplateUrl('main/templates/login.html', {
     scope: $scope,
     animation: 'slide-in-up'
   }).then(function(modal) {
-    $scope.modal = modal;
+    $scope.loginModal = modal;
+  });
+
+  $ionicModal.fromTemplateUrl('main/templates/verify-modal.html', {
+    scope: $scope,
+    animation: 'slide-in-up'
+  }).then(function(modal) {
+    $scope.verifyModal = modal;
   });
 
   $scope.openLogin = function() {
-    $scope.modal.show();
+    $scope.loginModal.show();
   };
 
   $scope.$on('closeLogin', function() {
-    $scope.modal.hide();
+    $scope.loginModal.hide();
+  });
+  
+  $scope.$on('closeVerify', function() {
+    $scope.verifyModal.hide();
   });
 
   $scope.toggleResponderMode = function() {
@@ -33,11 +44,12 @@ angular.module('main')
      	   }
      	   UserService.updateUser(user);
        } else {
-         //TODO 
+         $scope.verifyModal.show();
        }
      } else {
        //TODO display modal to open application form
-       console.log("Not a respoder");
+       $scope.verifyModal.show();
+       console.log('Not a respoder');
      }
   };
 
