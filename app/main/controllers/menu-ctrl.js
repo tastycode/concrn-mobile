@@ -47,8 +47,7 @@ angular.module('main')
          $scope.verifyModal.show();
        }
      } else {
-       //TODO display modal to open application form
-       console.log('Not a respoder');
+       window.open('https://docs.google.com/a/minerva.kgi.edu/forms/d/1aIkySaLiWBZ3-blVcNPP56l33fcq0_NAJaoCznGuFis/viewform', '_system', 'location=yes');
      }
   };
 
