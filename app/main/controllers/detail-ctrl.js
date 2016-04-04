@@ -1,5 +1,6 @@
 angular.module('main')
-.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk, $cordovaCamera) {
+.controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk, $cordovaCamera,
+$cordovaDialogs) {
   ionicMaterialInk.displayEffect();
   $scope.urgencyValues = [
     {id: 0, label: 'Not urgent'},
@@ -45,6 +46,9 @@ angular.module('main')
   }
 
   $scope.setUrgency = function(urgencyObject) {
+    if (urgencyObject.id === 5) {
+      $cordovaDialogs.alert('If you need help immediately, please call 911');
+    }
     $scope.report.urgency = urgencyObject.id;
   }
 
@@ -75,11 +79,13 @@ angular.module('main')
           nature: $scope.report.nature
         }
       }).then(function() {
-        alert('Your report has been made. You will receive a text when a responder is on the way.')
+        //failure handler for if the report update with extra info fails
+        $cordovaDialogs.alert('Your report has been made. You will receive a text when a responder is on the way.')
       });
-      $state.go('main.map');
     }, function() {
-        alert('Your report failed to send. Please contact support@concrn.com')
+      //failure handler for if the main report fails
+        $cordovaDialogs.alert('Your report failed to send. Please contact support@concrn.com')
     });
+    $state.go('main.map');
   };
 });
