@@ -9,7 +9,7 @@ angular.module('main')
   });
   
   $scope.$on('closeSubmitCode', function() {
-    $scope.loginModal.hide();
+    $scope.submitCodeModal.hide();
   });
   
   $scope.textVerificationCode = function() {

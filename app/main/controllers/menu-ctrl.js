@@ -48,7 +48,6 @@ angular.module('main')
        }
      } else {
        //TODO display modal to open application form
-       $scope.verifyModal.show();
        console.log('Not a respoder');
      }
   };

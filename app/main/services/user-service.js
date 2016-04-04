@@ -69,7 +69,7 @@ angular.module('main')
   };
   
   service.submitVerificationCode = function(user, code, callback) {
-    return $http.post(apiHost + '/api/phone_numbers.js?phone=' + user.phone).then(function(response) {
+    return $http.post(apiHost + '/api/phone_numbers/verify?phone=' + user.phone + '&code=' + code).then(function(response) {
       callback(response.data);
     });
   };
