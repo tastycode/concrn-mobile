@@ -87,5 +87,12 @@ $cordovaDialogs) {
         $cordovaDialogs.alert('Your report failed to send. Please contact support@concrn.com')
     });
     $state.go('main.map');
+    mixpanel.track('Report Sent', {
+      is_image_attached: !!$scope.report.image,
+      urgency: $scope.report.urgency,
+      gender: $scope.report.gender,
+      age: $scope.report.age,
+      nature: $scope.report.nature
+    })
   };
 });

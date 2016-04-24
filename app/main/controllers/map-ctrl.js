@@ -70,6 +70,7 @@ angular.module('main')
   }
 
   $scope.submitReport = function () {
+    mixpanel.track('Report Submitted');
     $state.go('main.detail', {lat: $scope.center.lat, lng: $scope.center.lng, address: $scope.address});
   };
 

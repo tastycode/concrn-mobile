@@ -213,6 +213,7 @@ angular.module('main', [
 })
 .run(function($cordovaStatusbar, $ionicPlatform) {
   $ionicPlatform.ready(function() {
+    mixpanel.track('App Launched');
     $cordovaStatusbar.style(2);  //black translucent http://ngcordova.com/docs/plugins/statusbar/
   });
 });
