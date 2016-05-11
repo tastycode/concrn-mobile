@@ -86,7 +86,7 @@ $cordovaDialogs) {
       //failure handler for if the main report fails
         $cordovaDialogs.alert('Your report failed to send. Please contact support@concrn.com')
     });
-    $state.go('main.map');
+    $state.go('main.map', {}, {reload: true});
     mixpanel.track('Report Sent', {
       is_image_attached: !!$scope.report.image,
       urgency: $scope.report.urgency,
