@@ -88,6 +88,10 @@ $RobotoDraftFontVersion: "1.0.0";
   .button-small {
     margin-right: 10px;
   }
+
+  select {
+    pointer-events: none;
+  }
 }
 
 .detailPhoto {
