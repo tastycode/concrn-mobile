@@ -7,12 +7,12 @@
   <!-- do you want padding? -->
   <ion-content>
     <div class="detail">
-      <div class="detailPhoto" ng-click="takePhoto()">
+      <div class="detailPhoto" ng-click="takePhoto()" ng-hide="natureVisible">
         <i class="icon ion-camera" ng-if="!report.photo"></i>
         <img class="detailPhoto-preview" ng-style="{'background-image': 'url(' + report.photo + ')'}" ng-if="report.photo"></img>
         <span class="detailPhoto-copy">Take Photo</span>
       </div>
-      <div class="list">
+      <div class="list" ng-hide="natureVisible">
         <div class="item item-divider">
           Urgency
         </div>
@@ -37,8 +37,14 @@
           <select ng-model="report.age" ng-options="o for o in ageValues">
           </select>
         </label>
+      </div>
+      <div class="list">
+        <div class="item item-divider item-icon-right" ng-show="natureVisible">
+          Notes
+          <i class="icon ion-chevron-up" ng-click="hideNature()"></i>
+        </div>
         <label class="item item-input">
-          <textarea ng-model="report.nature" placeholder="Add additional important information here"></textarea>
+          <textarea ng-focus="showNature()" ng-blur="hideNature()" ng-model="report.nature" placeholder="Add additional important information here"></textarea>
         </label>
       </div>
     </div>

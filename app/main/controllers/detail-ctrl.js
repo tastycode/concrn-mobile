@@ -60,6 +60,14 @@ $cordovaDialogs) {
     $scope.report.gender = o;
   }
 
+  $scope.showNature = function() {
+    $scope.natureVisible = true;
+  }
+
+  $scope.hideNature = function() {
+    $scope.natureVisible = false;
+  }
+
   $scope.finishReport = function () {
     var observations = $scope.report.observations ? $scope.report.observations.join(',') : '';
 
