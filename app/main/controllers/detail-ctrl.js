@@ -1,6 +1,6 @@
 angular.module('main')
 .controller('DetailCtrl', function ($scope, $state, $stateParams, ConcrnClient, ionicMaterialInk, $cordovaCamera,
-$cordovaDialogs) {
+$cordovaDialogs, $ionicModal, localStorage) {
   ionicMaterialInk.displayEffect();
   $scope.urgencyValues = [
     {id: 0, label: 'Not urgent'},
@@ -74,7 +74,10 @@ $cordovaDialogs) {
     ConcrnClient.reportCrisis({
       lat: $stateParams.lat,
       lng: $stateParams.lng,
+      phone: localStorage.get('phone'),
+      name: localStorage.get('name'),
       address: $stateParams.address
+
     }).then(function(report) {
       ConcrnClient.updateReport(report.id, {
         report: {
