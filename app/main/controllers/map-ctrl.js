@@ -48,6 +48,11 @@ angular.module('main')
   }
 
   leafletData.getMap().then(function (map) {
+    var lc = L.control.locate({
+      drawCircle: true,
+      follow: true,
+      keepCurrentZoomLabel: true}).addTo(map);
+    lc.start();
     $scope.map = map;
     setCenterMarker();
   });
