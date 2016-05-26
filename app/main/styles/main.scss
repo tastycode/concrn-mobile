@@ -53,6 +53,7 @@ $RobotoDraftFontVersion: "1.0.0";
 }
 
 .mapScreen {
+  position: relative;
   .leaflet-control-attribution {
     position: absolute;
     bottom: 10vh;
@@ -72,6 +73,9 @@ $RobotoDraftFontVersion: "1.0.0";
 .mapAddress {
   height: 2em;
   width: 100%;
+  background: #fff;
+  text-align: center;
+  padding: 5px;
 }
 .mapSubmit {
     width: 100%;

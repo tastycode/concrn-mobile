@@ -2,8 +2,8 @@
   <ion-content>
     <div class="mapScreen">
       <leaflet tiles="tiles" lf-center="center" markers="markers" height="90vh" width="100%"></leaflet>
-      <div class="mapSubmitSection">
-        <div class="mapAddress">{{addressLabel}}</div>
+      <div class="mapSubmitSection" ng-show="addressLabel">
+        <div class="mapAddress" ng-click="changeAddress()">{{addressLabel}}</div>
       </div>
     </div>
   </ion-content>

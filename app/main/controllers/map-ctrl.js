@@ -19,6 +19,8 @@ angular.module('main')
   }
   verifyLogin();
   ionicMaterialInk.displayEffect();
+  $scope.addressLabel = null;
+  $scope.address = null;
   $scope.center = {
     autoDiscover: true
   };
@@ -42,7 +44,7 @@ angular.module('main')
         iconUrl: 'main/assets/images/pin.png', iconSize: [32, 56], iconAnchor: [15, 50]
       }
     };
-    _.debounce(updateAddressFromCenter, 1000)();
+    _.throttle(updateAddressFromCenter, 1000)();
   }
 
   leafletData.getMap().then(function (map) {
@@ -64,14 +66,29 @@ angular.module('main')
   });
 
   function updateAddressFromCenter() {
-    return  ReverseGeocoder($scope.center.lat, $scope.center.lng).then(function(address) {
-      $scope.address = address;
-    });
+    if ($scope.center.lat != 0 && $scope.center.lng != 0) {
+      return  ReverseGeocoder($scope.center.lat, $scope.center.lng).then(function(address) {
+        $scope.address = address;
+        $scope.addressLabel = shortenAddress(address);
+      });
+    }
+  }
+
+  function shortenAddress(longAddress) {
+    return longAddress.split(',')[0];
   }
 
   $scope.submitReport = function () {
     mixpanel.track('Report Submitted');
     $state.go('main.detail', {lat: $scope.center.lat, lng: $scope.center.lng, address: $scope.address});
   };
+
+  $scope.changeAddress = function() {
+    navigator.notification.prompt('Enter a new address', function(newAddress) {
+      $scope.addressLabel = shortenAddress(newAddress);
+      $scope.address = newAddress;
+    }, 'Address', ['Done', 'Cancel'], $scope.address);
+
+  }
 
 });
