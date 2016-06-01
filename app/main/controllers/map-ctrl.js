@@ -51,6 +51,7 @@ angular.module('main')
     var lc = L.control.locate({
       drawCircle: true,
       follow: true,
+      setView: false,
       keepCurrentZoomLabel: true}).addTo(map);
     lc.start();
     $scope.map = map;

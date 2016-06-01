@@ -16,5 +16,6 @@ angular.module('main')
     } else {
       $scope.$emit('closeLogin');
     }
+    return false;
   };
 });

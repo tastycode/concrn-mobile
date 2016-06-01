@@ -6,15 +6,19 @@
         </img>
       </div>
       <div class="list">
-        <label class="item item-input">
-          <input type="text" placeholder="Name" ng-model="responder.name">
-        </label>
-        <label class="item item-input">
-          <input type="text" placeholder="Phone" ng-model="responder.phone">
-        </label>
-        <div class="padding">
-          <button class="button button-block button-positive" ng-click="updateReporter()">Continue</button>
-        </div>
+        <form name="loginForm" ng-submit="updateReporter()">
+          <label class="item item-input">
+            <input type="text" name="name" placeholder="Name" ng-model="responder.name" required>
+          </label>
+          <label class="item item-input">
+            <input type="tel" name="phone" placeholder="Phone" ng-model="responder.phone" required>
+          </label>
+          <div class="padding">
+            <button class="button button-block button-positive" ng-disabled="loginForm.$invalid">Continue</button>
+           <p ng-show="loginForm.name.$error.required && !loginForm.name.$pristine">Name is required</p>
+           <p ng-show="loginForm.phone.$error.required && !loginForm.phone.$pristine">Phone is required</p>
+          </div>
+        </form>
       </div>
     </div>
   </ion-content>
