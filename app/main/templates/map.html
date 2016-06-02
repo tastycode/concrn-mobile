@@ -1,7 +1,7 @@
 <ion-view view-title="Concrn">
   <ion-content>
     <div class="mapScreen">
-      <leaflet tiles="tiles" lf-center="center" markers="markers" height="90vh" width="100%"></leaflet>
+      <leaflet tiles="tiles" lf-center="center" markers="markers" height="90vh" width="100%" min-zoom="13" max-zoom="17"></leaflet>
       <div class="mapSubmitSection" ng-show="addressLabel">
         <div class="mapAddress" ng-click="changeAddress()">{{addressLabel}}</div>
       </div>

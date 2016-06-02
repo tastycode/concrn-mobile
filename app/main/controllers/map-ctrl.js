@@ -22,6 +22,7 @@ angular.module('main')
   $scope.addressLabel = null;
   $scope.address = null;
   $scope.center = {
+    zoom: 17,
     autoDiscover: true
   };
   $scope.tiles = {
