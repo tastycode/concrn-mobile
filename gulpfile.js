@@ -59,6 +59,8 @@ if (options.cordova) {
 // load tasks
 requireDir('./gulp');
 
+gulp.task('bump', require('gulp-cordova-bump'));
+
 // default task
 gulp.task('default', function () {
   // cordova build command & gulp build

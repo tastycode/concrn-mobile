@@ -26,5 +26,6 @@
     "ionic": "~1.3.0"
   },
   "name": "concrn",
-  "private": true
+  "private": true,
+  "version": "0.0.2"
 }
