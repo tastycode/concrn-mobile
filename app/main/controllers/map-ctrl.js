@@ -25,12 +25,11 @@ angular.module('main')
     zoom: 17,
     autoDiscover: true
   };
+
   $scope.tiles = {
-    url: 'http://otile{s}.mqcdn.com/tiles/1.0.0/map/{z}/{x}/{y}.jpg',
-    options: {
-      subdomains: '1234'
-    }
+    url: 'http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'
   };
+
   //get center
   function setCenterMarker () {
     if (!$scope.map.getCenter) {
